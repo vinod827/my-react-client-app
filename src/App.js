@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
 
 class App extends Component {
 
@@ -8,7 +6,7 @@ class App extends Component {
     super(props);
     this.state = {
       items:[],
-      isLoaded:false
+      isLoaded:false,
     }
   }
 
@@ -17,15 +15,13 @@ class App extends Component {
       headers: {
           authorization: 'Bearer effb6f5c-574e-4419-8790-5193233f9adb'
       }})
-     .then(response => {
-       response.json();
-     })
+     .then(response => response.json())
      .then(json => {
          this.setState({
             isLoaded:true,
             items:json,
          })
-     })
+     });
   }
 
 
@@ -39,16 +35,16 @@ class App extends Component {
 
     return (
       <div className="App">
-         <ul>
-             {
-               this.items.map(item => (
-                 <li key={item.id}>
-                  //File name:{item.name} | Created date:{item.date} | Hash:{name.link}
-                  File name:{item}
-                 </li>
-               ))
-             };
-         </ul>
+      <ul>
+          {
+            this.items.map(item => (
+              <li key={item.id}>
+               //File name:{item.name} | Created date:{item.date} | Hash:{name.link}
+               {item}
+              </li>
+            ))
+          };
+      </ul>
       </div>
     );
   }
