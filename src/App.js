@@ -13,15 +13,17 @@ class App extends Component {
   }
 
   componentDidMount(){
-     fetch('https://my-resource-server.cfapps.io/resource/uploadedfiles')
+     fetch('https://my-resource-server.cfapps.io/resource/uploadedfiles', {
+      headers: {
+          authorization: 'Bearer effb6f5c-574e-4419-8790-5193233f9adb'
+      }})
      .then(response => {
        response.json();
-       alert(response);
      })
      .then(json => {
          this.setState({
             isLoaded:true,
-            items:json
+            items:json,
          })
      })
   }
